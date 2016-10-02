@@ -1,0 +1,21 @@
+{
+  "name": "serverless-aws-log-parser",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/**/*.spec.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "co": "^4.6.0",
+    "co-fs": "^1.2.0",
+    "moment": "^2.15.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "co-mocha": "^1.1.3"
+  }
+}
