@@ -1,7 +1,7 @@
 {
   "name": "serverless-aws-log-parser",
   "version": "0.0.1",
-  "description": "",
+  "description": "make sense of api-gateway and lambda log files",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/**/*.spec.js"
@@ -10,10 +10,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "co": "^4.6.0",
-    "co-fs": "^1.2.0",
     "moment": "^2.15.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rotemtam/serverless-aws-logs-parser.git"
+  },
+  "author": "Rotem Tamir",
+  "license": "MIT",
+  "keywords": [
+    "aws-lambda",
+    "api-gateway",
+    "node.js",
+    "es6",
+    "logs"
+  ],
+  "author": "Rotem Tamir",
+  "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
     "co-mocha": "^1.1.3"
