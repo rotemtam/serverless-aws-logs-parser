@@ -16,6 +16,11 @@ let logFileContents = readLogFile(/* ... */)
 
 // tell the parser which service the logs are for (api-gateway|lambda)
 let parsed = LogParser('api-gateway', logFileContents)
+
+// optional add some metadata to add to each log entry
+// will add meta: data, to each parsed log entry
+
+let parsedWithMetadata = LogParser('api-gateway', logFileContents, {meta: 'data'})
 ```
 ### Background
 

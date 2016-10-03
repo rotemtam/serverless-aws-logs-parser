@@ -26,5 +26,19 @@ describe('Parsing a log file', () => {
     })
   });
 
+  describe('Adding metadata', () => {
+    let res;
+    before(function () {
+      res = processFile('api-gateway', file['api-gateway']['two-events'], {meta: 'data'})
+    })
+
+
+    it('each of the events should have the metadata attrs', () => {
+      res.events.forEach( (e) => {
+        expect(e.meta).to.equal('data')
+      })
+    })
+  });
+
 
 });

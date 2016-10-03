@@ -6,9 +6,6 @@
   "scripts": {
     "test": "mocha tests/**/*.spec.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "moment": "^2.15.1"
   },

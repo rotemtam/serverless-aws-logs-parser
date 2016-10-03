@@ -10,7 +10,8 @@ function is_end(line) {
   return /Method completed with/.test(line)
 }
 
-module.exports = (service, logFileContents) => {
+module.exports = (service, logFileContents, eventMetadata) => {
+  eventMetadata = eventMetadata || {}
   let reducer = (memo, line) => {
     if (is_start(line))
         memo['current'] = []
@@ -28,5 +29,5 @@ module.exports = (service, logFileContents) => {
   let lines = logFileContents.split('\n')
   lines = lines.reduce(reducer, {current: [], events: []})
 
-  return {events: lines.events}
+  return {events: lines.events.map( (e) => Object.assign(e, eventMetadata))}
 }
