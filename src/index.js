@@ -2,23 +2,34 @@
 
 const processEvent = require('./process-event')
 
-function is_start(line) {
-  return /Verifying Usage Plan/.test(line)
+const DELIMETERS = {
+  'api-gateway': {
+    START: /Verifying Usage Plan/,
+    END: /Method completed with/
+  },
+  'lambda': {
+    START: /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z{1} START/,
+    END: /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z{1} REPORT/
+  }
 }
 
-function is_end(line) {
-  return /Method completed with/.test(line)
+function is_start(service, line) {
+  return DELIMETERS[service].START.test(line)
+}
+
+function is_end(service, line) {
+  return DELIMETERS[service].END.test(line)
 }
 
 module.exports = (service, logFileContents, eventMetadata) => {
   eventMetadata = eventMetadata || {}
   let reducer = (memo, line) => {
-    if (is_start(line))
+    if (is_start(service, line))
         memo['current'] = []
 
     memo['current'].push(line.trim())
 
-    if (is_end(line)) {
+    if (is_end(service, line)) {
         let txt = memo['current'].join('\n')
         memo['events'].push(processEvent(service, txt))
     }

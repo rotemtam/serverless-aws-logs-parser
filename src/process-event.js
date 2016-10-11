@@ -13,6 +13,15 @@ const service_regex = {
     request_path: /request path: {(.*)}/,
     resource_path: /Resource Path: (.*)/,
     response_status: /completed with status: (\d{3})/
+  },
+  'lambda': {
+    ts_start: /(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z){1} START/,
+    ts_end: /(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z){1} END/,
+    request_id: /START RequestId: (.{36})/,
+    duration_ms: /REPORT RequestId: .{36}	Duration: (\d+\.\d+)/,
+    billed_duration_ms: /Billed Duration: (\d+) ms/,
+    max_memory_used: /Max Memory Used: (\d+) MB/, //,
+    memory_size: /Memory Size: (\d+) MB/,
   }
 }
 
@@ -29,7 +38,7 @@ module.exports = (service, txt) => {
     }
 
   }
-  if (res.ts_start && res.ts_end) {
+  if (! res.duration_ms && res.ts_start && res.ts_end) {
     res.duration_ms = moment(res.ts_end) - moment(res.ts_start)
   }
   return Object.assign(res, {raw: txt})
