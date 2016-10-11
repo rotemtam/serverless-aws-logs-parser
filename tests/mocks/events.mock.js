@@ -72,6 +72,108 @@ module.exports = {
 2016-10-01T10:55:36.480Z Method response body after transformations: {"errorMessage":"Error: Request failed with status code 422"}
 2016-10-01T10:55:36.480Z Method response headers: {Content-Type=application/json}
 2016-10-01T10:55:36.480Z Successfully completed execution
-2016-10-01T10:55:36.480Z Method completed with status: 400`
+2016-10-01T10:55:36.480Z Method completed with status: 400`,
+  lambda_event: `2016-10-01T10:47:56.545Z START RequestId: 8329c002-87c4-11e6-bbf0-c124e4d39f76 Version: $LATEST
+
+  2016-10-01T10:47:56.901Z 2016-10-01T10:47:56.582Z	8329c002-87c4-11e6-bbf0-c124e4d39f76	{ [Error: Request failed with status code 422]
+    config:
+     { transformRequest: { '0': [Function: transformRequest] },
+       transformResponse: { '0': [Function: transformResponse] },
+       headers:
+        { Accept: 'application/json, text/plain, */*',
+          'User-Agent': 'rotemtam' },
+       timeout: 0,
+       xsrfCookieName: 'XSRF-TOKEN',
+       xsrfHeaderName: 'X-XSRF-TOKEN',
+       maxContentLength: -1,
+       validateStatus: [Function: validateStatus],
+       method: 'get',
+       params: { q: undefined, sort: 'stars', order: 'desc' },
+       responseType: 'json',
+       url: 'https://api.github.com/search/repositories',
+       data: undefined },
+    response:
+     { status: 422,
+       statusText: 'Unprocessable Entity',
+       headers:
+        { server: 'GitHub.com',
+          date: 'Sat, 01 Oct 2016 10:47:56 GMT',
+          'content-type': 'application/json; charset=utf-8',
+          'content-length': '154',
+          connection: 'close',
+          status: '422 Unprocessable Entity',
+          'x-ratelimit-limit': '10',
+          'x-ratelimit-remaining': '7',
+          'x-ratelimit-reset': '1475318905',
+          'cache-control': 'no-cache',
+          'x-github-media-type': 'github.v3',
+          'access-control-expose-headers': 'ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval',
+          'access-control-allow-origin': '*',
+          'content-security-policy': 'default-src \'none\'',
+          'strict-transport-security': 'max-age=31536000; includeSubdomains; preload',
+          'x-content-type-options': 'nosniff',
+          'x-frame-options': 'deny',
+          'x-xss-protection': '1; mode=block',
+          'x-github-request-id': '345AE533:06D2:131FC5E:57EF945C' },
+       config:
+        { transformRequest: [Object],
+          transformResponse: [Object],
+          headers: [Object],
+          timeout: 0,
+          xsrfCookieName: 'XSRF-TOKEN',
+          xsrfHeaderName: 'X-XSRF-TOKEN',
+          maxContentLength: -1,
+          validateStatus: [Function: validateStatus],
+          method: 'get',
+          params: [Object],
+          responseType: 'json',
+          url: 'https://api.github.com/search/repositories',
+          data: undefined },
+       request:
+        ClientRequest {
+          domain: null,
+          _events: [Object],
+          _eventsCount: 1,
+          _maxListeners: undefined,
+          output: [],
+          outputEncodings: [],
+          outputCallbacks: [],
+          outputSize: 0,
+          writable: true,
+          _last: true,
+          chunkedEncoding: false,
+          shouldKeepAlive: false,
+          useChunkedEncodingByDefault: false,
+          sendDate: false,
+          _removedHeader: {},
+          _contentLength: 0,
+          _hasBody: true,
+          _trailer: '',
+          finished: true,
+          _headerSent: true,
+          socket: [Object],
+          connection: [Object],
+          _header: 'GET /search/repositories?sort=stars&order=desc HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nUser-Agent: rotemtam\r\nHost: api.github.com\r\nConnection: close\r\n\r\n',
+          _headers: [Object],
+          _headerNames: [Object],
+          _onPendingData: null,
+          agent: [Object],
+          socketPath: undefined,
+          method: 'GET',
+          path: '/search/repositories?sort=stars&order=desc',
+          parser: null,
+          res: [Object] },
+       data:
+        { message: 'Validation Failed',
+          errors: [Object],
+          documentation_url: 'https://developer.github.com/v3/search' } } }
+
+  2016-10-01T10:47:56.920Z 2016-10-01T10:47:56.901Z	8329c002-87c4-11e6-bbf0-c124e4d39f76	{"errorMessage":"Error: Request failed with status code 422"}
+
+  2016-10-01T10:47:56.920Z END RequestId: 8329c002-87c4-11e6-bbf0-c124e4d39f76
+
+  2016-10-01T10:47:56.920Z REPORT RequestId: 8329c002-87c4-11e6-bbf0-c124e4d39f76	Duration: 352.40 ms	Billed Duration: 400 ms 	Memory Size: 128 MB	Max Memory Used: 23 MB
+
+`
 
 }

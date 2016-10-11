@@ -67,4 +67,35 @@ describe('process single event', () => {
     })
 
   });
+
+  describe('Lambda Event', () => {
+    let res;
+    before(() => {
+      res = processEvent('lambda', events.lambda_event)
+    })
+    it('should find the request id', () => {
+      expect(res.request_id).to.eql('8329c002-87c4-11e6-bbf0-c124e4d39f76')
+    })
+
+    it('should find the start ts', () => {
+      expect(res.ts_start).to.eql('2016-10-01T10:47:56.545Z')
+    })
+    it('should find the end ts', () => {
+      expect(res.ts_end).to.eql('2016-10-01T10:47:56.920Z')
+    })
+    it('should find the duration ms', () => {
+      expect(res.duration_ms).to.equal('352.40')
+    })
+    it('should find the billed duration ms', () => {
+      expect(res.billed_duration_ms).to.equal('400')
+    })
+    it('should find the memory size', () => {
+      expect(res.memory_size).to.equal('128')
+    })
+    it('should find the max memory used', () => {
+      expect(res.max_memory_used).to.equal('23')
+    })
+
+
+  });
 });
